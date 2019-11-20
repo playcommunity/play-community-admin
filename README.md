@@ -1,57 +1,26 @@
-# Ant Design Pro
+## 1. 介绍
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+该项目是[PlayScala社区](https://github.com/playcommunity/play-community)的前端项目，开发模板基于[Ant Design Pro V4](https://pro.ant.design/index-cn)。
 
-## Environment Prepare
+## 2. 开发环境配置
 
-Install `node_modules`:
-
+- 将项目clone到本地
+```bash
+git clone https://github.com/playcommunity/play-community-board.git
+```
+- 安装依赖
 ```bash
 npm install
 ```
-
-or
-
-```bash
-yarn
-```
-
-## Provided Scripts
-
-Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
-
-Scripts provided in `package.json`. It's safe to modify or add additional script:
-
-### Start project
-
+- 启动项目
 ```bash
 npm start
 ```
-
-### Build project
-
+- 构建项目
 ```bash
 npm run build
-```
+``` 
+- 访问项目   
+在浏览器中打开：[http://localhost:8000](http://localhost:8000)，登录账户密码为：`admin/admin`。
 
-### Check code style
 
-```bash
-npm run lint
-```
-
-You can also use script to auto fix some lint error:
-
-```bash
-npm run lint:fix
-```
-
-### Test code
-
-```bash
-npm test
-```
-
-## More
-
-You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
