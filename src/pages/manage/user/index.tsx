@@ -44,12 +44,7 @@ const status = ['关闭', '运行中', '已上线', '异常'];
 
 interface TableListProps extends FormComponentProps {
   dispatch: Dispatch<
-    Action<
-      | 'manageUser/add'
-      | 'manageUser/fetch'
-      | 'manageUser/remove'
-      | 'manageUser/update'
-    >
+    Action<'manageUser/add' | 'manageUser/fetch' | 'manageUser/remove' | 'manageUser/update'>
   >;
   loading: boolean;
   manageUser: StateType;
@@ -92,7 +87,7 @@ class TableList extends Component<TableListProps, TableListState> {
   };
 
   editAndDelete = (key: string, record?: FormValueType) => {
-    console.log(key + ": ");
+    console.log(key + ': ');
     console.log(record);
     /* if (key === 'edit') this.showEditModal(currentItem);
     else if (key === 'delete') {
@@ -105,7 +100,7 @@ class TableList extends Component<TableListProps, TableListState> {
       });
     } */
   };
-  
+
   columns: StandardTableColumnProps[] = [
     {
       title: 'ID',
@@ -263,8 +258,11 @@ class TableList extends Component<TableListProps, TableListState> {
     form.validateFields((err, fieldsValue) => {
       if (err) return;
 
+      console.log(fieldsValue);
+
       const values = {
         ...fieldsValue,
+        createTime: fieldsValue.createTime.format('YYYY-MM-DD'),
         updatedAt: fieldsValue.updatedAt && fieldsValue.updatedAt.valueOf(),
       };
 
@@ -327,16 +325,17 @@ class TableList extends Component<TableListProps, TableListState> {
       <Form onSubmit={this.handleSearch} layout="inline">
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
-            <FormItem label="规则名称">
+            <FormItem label="用户昵称">
               {getFieldDecorator('name')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status')(
+            <FormItem label="来源渠道">
+              {getFieldDecorator('channel')(
                 <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
+                  <Option value="">所有</Option>
+                  <Option value="WeiXin">微信</Option>
+                  <Option value="QQ">QQ</Option>
                 </Select>,
               )}
             </FormItem>
@@ -367,50 +366,57 @@ class TableList extends Component<TableListProps, TableListState> {
       <Form onSubmit={this.handleSearch} layout="inline">
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
-            <FormItem label="规则名称">
+            <FormItem label="用户昵称">
               {getFieldDecorator('name')(<Input placeholder="请输入" />)}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status')(
+            <FormItem label="来源渠道">
+              {getFieldDecorator('channel')(
                 <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
+                  <Option value="">所有</Option>
+                  <Option value="WeiXin">微信</Option>
+                  <Option value="QQ">QQ</Option>
                 </Select>,
               )}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="调用次数">
-              {getFieldDecorator('number')(<InputNumber style={{ width: '100%' }} />)}
+            <FormItem label="社区积分">
+              {getFieldDecorator('score')(<InputNumber style={{ width: '100%' }} />)}
             </FormItem>
           </Col>
         </Row>
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={8} sm={24}>
-            <FormItem label="更新日期">
-              {getFieldDecorator('date')(
-                <DatePicker style={{ width: '100%' }} placeholder="请输入更新日期" />,
+            <FormItem label="注册日期">
+              {getFieldDecorator('createTime')(
+                <DatePicker
+                  style={{ width: '100%' }}
+                  placeholder="请输入注册日期"
+                  format="YYYY-MM-DD"
+                />,
               )}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status3')(
+            <FormItem label="激活状态">
+              {getFieldDecorator('active')(
                 <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
+                  <Option value="">所有</Option>
+                  <Option value="1">已激活</Option>
+                  <Option value="0">未激活</Option>
                 </Select>,
               )}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
-            <FormItem label="使用状态">
-              {getFieldDecorator('status4')(
+            <FormItem label="启用状态">
+              {getFieldDecorator('enable')(
                 <Select placeholder="请选择" style={{ width: '100%' }}>
-                  <Option value="0">关闭</Option>
-                  <Option value="1">运行中</Option>
+                  <Option value="">所有</Option>
+                  <Option value="1">已启用</Option>
+                  <Option value="0">未启用</Option>
                 </Select>,
               )}
             </FormItem>
