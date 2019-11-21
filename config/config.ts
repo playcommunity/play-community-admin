@@ -120,6 +120,18 @@ export default {
           authority: ['admin', 'user'],
           routes: [
             {
+              name: '系统管理',
+              icon: 'setting',
+              path: '/manage',
+              routes: [
+                {
+                  path: '/manage/user',
+                  name: '用户管理',
+                  component: './manage/user',
+                },
+              ],
+            },
+            {
               name: '系统设置',
               icon: 'setting',
               path: '/setting',
