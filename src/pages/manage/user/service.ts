@@ -2,7 +2,7 @@ import request from '@/utils/request';
 import { TableListParams } from './data';
 
 export async function queryRule(params: TableListParams) {
-  return request('/api/rule', {
+  return request('/admin/user/list', {
     params,
   });
 }

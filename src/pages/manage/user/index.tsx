@@ -104,11 +104,15 @@ class TableList extends Component<TableListProps, TableListState> {
   columns: StandardTableColumnProps[] = [
     {
       title: 'ID',
-      dataIndex: 'name',
+      dataIndex: 'key',
     },
     {
       title: '昵称',
-      dataIndex: 'desc',
+      dataIndex: 'name',
+    },
+    {
+      title: '渠道',
+      dataIndex: 'channel',
     },
     {
       title: '状态',
@@ -137,7 +141,7 @@ class TableList extends Component<TableListProps, TableListState> {
     },
     {
       title: '注册时间',
-      dataIndex: 'updatedAt',
+      dataIndex: 'createTime',
       sorter: true,
       render: (val: string) => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
     },
